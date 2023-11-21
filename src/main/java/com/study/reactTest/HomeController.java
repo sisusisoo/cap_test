@@ -30,7 +30,7 @@ public class HomeController {
 		model.addAttribute("serverTime");
 		return "sendView";
 	}
-
+// 오창은입니다.
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public void fileUpload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
 		// 추가데이터 테스트

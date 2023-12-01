@@ -29,6 +29,12 @@ dependencies {
 // https://mvnrepository.com/artifact/org.slf4j/slf4j-api//소켓 통신 우이해 10월 15일
 	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 
+	//창은이 프로젝트
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	//-------------------
 }
 
 tasks.named('test') {

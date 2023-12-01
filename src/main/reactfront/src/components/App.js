@@ -6,7 +6,7 @@ import Signup from "../pages/Signup";
 import Main from "../pages/Main";
 import UserPicture from "../pages/UserPicture";
 import FileData from '../Screens/FileData'
-
+import AppCE from '../Screens/AppCE'//.하나는 현재경로
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +17,8 @@ function App() {
         <Route path="/login/main" element={<Main />} />
         <Route path="/login/main/picture" element={<UserPicture />} />
         <Route path="FileData"  element={<FileData />}></Route>
+         <Route path="AppCE"  element={<AppCE />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

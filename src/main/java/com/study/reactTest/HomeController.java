@@ -34,7 +34,7 @@ public class HomeController {
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public void fileUpload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
 		// 추가데이터 테스트
-		System.out.println("컨트롤러-------------------");
+		System.out.println("컨트롤러22-------------------");
 		System.out.println("이건가1"+multipartRequest);
 		//getParameter가 NULL이 나옴
 

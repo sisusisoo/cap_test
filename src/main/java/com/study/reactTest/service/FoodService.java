@@ -5,7 +5,9 @@ import java.util.List;
 import jakarta.transaction.Transactional;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.study.reactTest.dto.FoodDTO;
@@ -23,7 +25,27 @@ public class FoodService {
 
         this.foodRepository = foodRepository;
     }
+    public FoodDTO getFoodInfo(long foodId){
+        /*
+           1. 회원이 입력한 이메일로 DB에서 조회를 함
+           2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단
+        */
+        System.out.println("FoodId is " + foodId);
+        Optional<FoodEntity> byFoodId = foodRepository.findById(foodId);
+        //System.out.println("Input MemberDTO: " + byMemberEmail);
+        // 포장지가 두개인 개념
+        if (byFoodId.isPresent()){
+            // 조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다)
+            FoodEntity foodEntity = byFoodId.get(); // Optional로 감싸진 객체를 벗겨냄
+            System.out.println("Input MemberDTO: " + foodEntity.getFoodname());
 
+            FoodDTO dto = convertEntityToDto(foodEntity);
+            return dto;
+        }
+        else{
+            return null;
+        }
+    }
     @Transactional
     public List<FoodDTO> searchFood(String[] keyword) {
 

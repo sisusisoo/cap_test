@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 
+const {kakao} = window;
+
 const GetUserLocation = () => {
-    const [latitude, setLatitude] = useState(null);
-    const [longitude, setLongitude] = useState(null);
+    const [address, setAddress] = useState("");
 
     useEffect(()=> {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition (
                 (position) => {
-                    setLatitude(position.coords.latitude);
-                    setLongitude(position.coords.longitude);
+                    const {latitude, longitude} = position.coords;
+                    const geocoder = new kakao.maps.services.Geocoder();
+
+                    geocoder.coord2Address(longitude,latitude,(result,status) => {
+                        if(status === kakao.maps.services.Status.OK) {
+                            setAddress(result[0].address.address_name);
+                        }
+                    });
                 },
                 (error) => {
                     console.log(error);
@@ -22,7 +29,7 @@ const GetUserLocation = () => {
 
     return (
         <div>
-            <p>현재 위치는 Latitude : {latitude}, Longitude : {longitude} </p>
+            <p>현재 위치는 {address}</p>
         
         </div>
     )

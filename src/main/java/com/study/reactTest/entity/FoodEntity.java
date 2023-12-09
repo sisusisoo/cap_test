@@ -1,5 +1,6 @@
 package com.study.reactTest.entity;
 
+import com.study.reactTest.dto.FoodDTO;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -77,6 +78,28 @@ public class FoodEntity {
         this.foodiron = Foodiron;
         this.foodpotassium = Foodpotassium;
         this.foodsalt = Foodsalt;
+    }
+
+    // Entity -> DTO 로 변환
+    public static FoodDTO mapToDTO(FoodEntity foodEntity) {
+        FoodDTO dto = new FoodDTO();
+
+        dto.setId(foodEntity.getId());
+        dto.setFoodname(foodEntity.getFoodname());
+        dto.setFoodimagepath(foodEntity.getFoodimagepath());
+        dto.setFoodingredient(foodEntity.getFoodingredient());
+        dto.setFoodprofile(foodEntity.getFoodprofile());
+        dto.setFoodcalorie(foodEntity.getFoodcalorie());
+        dto.setFoodprotein(foodEntity.getFoodprotein());
+        dto.setFoodfat(foodEntity.getFoodfat());
+        dto.setFoodcarbohydrate(foodEntity.getFoodcarbohydrate());
+        dto.setFoodsugars(foodEntity.getFoodsugars());
+        dto.setFoodcalcium(foodEntity.getFoodcalcium());
+        dto.setFoodiron(foodEntity.getFoodiron());
+        dto.setFoodpotassium(foodEntity.getFoodpotassium());
+        dto.setFoodsalt(foodEntity.getFoodsalt());
+
+        return dto;
     }
 }
 

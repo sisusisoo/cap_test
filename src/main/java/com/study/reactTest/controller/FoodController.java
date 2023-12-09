@@ -12,10 +12,8 @@ import org.springframework.ui.Model;
 
 import java.util.Base64;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -45,9 +43,18 @@ public class FoodController {
             System.out.println("Foodiron: " + foodDTO.getFoodiron());
             System.out.println("Foodpotassium: " + foodDTO.getFoodpotassium());
             System.out.println("Foodsalt: " + foodDTO.getFoodsalt());
-            foodDTO.setBase64Image("");
         }
         return foodDtoList;
+    }
+    @PostMapping("/food")
+    public FoodDTO compareFoodGet(@RequestBody String id) {
+        // Your logic for handling GET requests
+        System.out.println(id);
+
+        Long foodId = Long.parseLong(id);
+        FoodDTO foodDTO = foodService.getFoodInfo(foodId);
+        System.out.println("Menu Detail[FoodName]" + foodDTO.getFoodname());
+        return foodDTO;
     }
 }
 

@@ -25,16 +25,6 @@ public class FoodDTO {
     private Double foodpotassium;
     private Double foodsalt;
 
-
-    private String base64Image;  // 추가한 부분
-
-    public void setBase64Image(String image) {
-        foodimagepath = image;
-    }
-    public String getBase64Image() {
-        return foodimagepath;
-    }
-
     public FoodEntity toEntity(){
         FoodEntity build = FoodEntity.builder()
                 .Id(Id)
@@ -55,6 +45,9 @@ public class FoodDTO {
         return build;
     }
 
+    public FoodDTO(){
+
+    }
     @Builder
     public FoodDTO(Long Id, String Foodname, String Foodingredient, String Foodimage,
                       String Foodprofile, Double Foodcalorie, Double Foodprotein, Double Foodfat,

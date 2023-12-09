@@ -1,188 +1,96 @@
 import GetUserLocation from "../components/getUserLocation";
 import styled from 'styled-components';
 import { FaLocationDot } from "react-icons/fa6";
-import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-
+import BottomNav from "../components/common/BottomNav";
+import Header from "../components/common/Header";
+import Backbutton from "../components/common/Backbutton";
 
 const Wrapper = styled.div`
-
-    position: relative;
-    width: 1440px;
-    height: 1024px;
-    margin: 0 auto;
-    //border: 1px solid #000000;
-`;
-
-const Logo = styled.img`
-
-    position: absolute;
-    width: 210.8px;
-    height: 160.2px;
-    left: 230.1px;
-    top: 56.4px;
+   width: 100%;
 `;
 
 const Texts = styled.div`
-
-    position: absolute;
-    width: 1000px;
-    height: 102px;
-    left: 250px;
-    top: 142px;
-
+    width: 100%;
+    margin-top:7vh;
     font-family: 'IBM Plex Mono';
     font-style: normal;
-    font-weight: 300px;
-    font-size: 25.336px;
-    line-height: 55px;
-
+    font-weight: 400;
+    font-size: 4vw;
+    line-height: 26px;
     color: #111010;
 
 `;
 
 const Inputs = styled.input`
+    box-sizing: border-box;
+    width: 100%;
+    height: 33px;
+    margin:2% 0 3% 0;
+    border: 1px solid #000000;
+    border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0px 26.136px;
-    gap: 8.71px;
-
-    position: absolute;
-    width: 750.67px;
-    height: 50.12px;
-    left: 290px;
-    top: 320px;
-    font-size: 20px;
-
-    filter: drop-shadow(0px 8.712px 8.712px rgba(0, 0, 0, 0.25));
 `;
 
-
-const Outside = styled.div`
-
-    position: absolute;
-    width: 295.5px;
-    height: 52.5px;
-    left: 256px;
-    top: 607.75px;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25.92px;
-    line-height: 35px;
-
-    color: #000000;
-
+const SmallBox = styled.div`
+    display:flex;
 `;
 
 const Halal = styled.div`
-
-    position: absolute;
-    width: 136.08px;
-    height: 132.72px;
-    left: 259.08px;
-    top: 427px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20.16px;
-    line-height: 27px;
-    border-radius:45px;
-    background: #F4F0EB;
-    
+    flex:1;
+    margin:5vw 0 0 4vw;
 `;
 
 const Vegun = styled.div`
-
-    position: absolute;
-    width: 157.2px;
-    height: 145.2px;
-    left: 490px;
-    top: 421px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21.6px;
-    line-height: 29px;
+    flex:1;
+    margin:5vw 0 0 4vw;
 `;
 
 const Spicy = styled.div`
-
-    position: absolute;
-    width: 165.6px;
-    height: 142.2px;
-    left: 760px;
-    top: 426px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21.6px;
-    line-height: 29px;
+   flex:1;
+   margin:5vw 0 0 4vw;
 
 `;
 
 const Dessert = styled.div`
-    position: absolute;
-    width: 178.2px;
-    height: 142.2px;
-    left: 996.15px;
-    top: 426.15px;
+   flex:1;
+   margin:5vw 0 0 4vw;
+`;
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21.6px;
-    line-height: 29px;
-
+const BigBox =styled.div`
+    display:flex;
 `;
 
 const Inside = styled.div`
-    
-    position: absolute;
-    width: 295.5px;
-    height: 298.5px;
-    left: 788px;
-    top:607.75px;
+   flex:1;
+   margin:10vw 0 2vw 4vw;
 
 `;
 
-const UserLocation = styled.div`
-    
-    position: absolute;
-    width: 981px;
-    height: 63px;
-    left: 300px;
-    top: 225px;
+const Outside = styled.div`
+   flex:1;
+   margin:10vw 0 2vw 4vw;
+`;
 
+const UserLocation = styled.div`
+    float:left;
+    margin:-1vh 0 0 3vw;
     font-family: 'IBM Plex Mono';
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
-    line-height: 47px;
-
+    font-size: 5vw;
+    line-height: 15px;
     color: #A08E8E;
 `;
 
 const LocationIcon = styled.div`
-    position: absolute;
-    left: 250px;
-    top: 265px;
-    bottom: 4.17%;
+  margin-top:2vh;
+  float:left;
 
 `;
 
-const SearchIcon = styled.div`
-    position: absolute;
-    left: 235px;
-    top: 320px;
-`;
 
 const Main = () => {
-    const logo = "/img/logo.png";
     const outside = "/img/outsidereas.png";
     const inside = "/img/insiderest.png";
     const halal = "/img/HalalFood.png";
@@ -196,48 +104,59 @@ const Main = () => {
         navigate("picture");
     }
 
+    const gotoMap = () => {
+        navigate("map");
+    }
+
 
     return (
+        <>
+         <Header/>
+         <Backbutton/>
         <Wrapper>
-            <Logo img src={logo} alt=""/>
             <Texts>
                 <h1>what would you like to eat today?</h1>
             </Texts>
             <LocationIcon>
-                <FaLocationDot size="30" color="grey" />
+                <FaLocationDot size="22" color="grey" />
             </LocationIcon>
             <UserLocation>
                 <GetUserLocation />
             </UserLocation>
             <div>
                 <Inputs placeholder="Restruant, cuisines, dishes"></Inputs>
+
             </div>
-            <SearchIcon>
-                <FcSearch size="50"/>
-            </SearchIcon>
-            <Halal>
-                <img src={halal} alt=" "/>
-            </Halal>
-            <Vegun>
-                <img src={vegun} alt=" "/>
-            </Vegun>
-            <Spicy>
-                <img src={spicy} alt=" " />
-            </Spicy>
-            <Dessert>
-                <img src={dessert} alt=" "/>
-            </Dessert>
-            
-            <Outside>
-                <img src={outside}  alt=' ' />
-            </Outside>
-            <Inside>
-                <img src={inside} onClick={gotoPicture} alt=' '/>
-            </Inside>
+            <SmallBox>
+                <Halal>
+                    <img src={halal} alt=" "/>
+                 </Halal>
+                <Vegun>
+                    <img src={vegun} alt=" "/>
+                </Vegun>
+                <Spicy>
+                    <img src={spicy} alt=" " />
+                </Spicy>
+                <Dessert>
+                    <img src={dessert} alt=" "/>
+                </Dessert>
+
+            </SmallBox>
+
+            <BigBox>
+                <Outside>
+                    <img src={outside} onClick={gotoMap} alt=' ' />
+                </Outside>
+                <Inside>
+                    <img src={inside} onClick={gotoPicture} alt=' '/>
+                </Inside>
+
+            </BigBox>
+            <BottomNav />
         </Wrapper>
-            
-  
+        </>
+
+
     );
 };
-
 export default Main;

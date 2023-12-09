@@ -1,20 +1,133 @@
 {
-  "Users" : [
-      {
-          "email": "test1@google.com",
-          "password" : "11111aaaa",
-          "nickname" : "user1"
-      },
-      {
-          "email":"test2@google.com",
-          "password":"22222bbbb",
-          "nickname" : "user2"
-      },
-      {
-          "email":"test3@google.com",
-          "password":"33333bbbb",
-          "nickname" : "user3"
+  "food": [
+    {
+      "id": 1,
+      "FoodName": "음식1",
+      "FooodImage": "http://via.placeholder.com/160",
+      "Foodingredient": "재료1",
+      "FoodProfile": "설명1",
+      "Foodcalorie": "칼로리1",
+      "Foodprotein": "단백질1",
+      "Foodfat": "지방1",
+      "Foodcarbohydrate": "탄수화물1",
+      "Foodsugars": "당류1",
+      "Foodcalcium": "칼슘1",
+      "Foodlron": "철분1",
+      "Foodpotassium": "칼륨1",
+      "Foodsalt": "나트륨1"
+    },
+    {
+      "id": 2,
+      "FoodName": "음식2",
+      "FooodImage": "http://via.placeholder.com/160",
+      "Foodingredient": "재료2",
+      "FoodProfile": "설명2",
+      "Foodcalorie": "칼로리2",
+      "Foodprotein": "단백질2",
+      "Foodfat": "지방2",
+      "Foodcarbohydrate": "탄수화물2",
+      "Foodsugars": "당류2",
+      "Foodcalcium": "칼슘2",
+      "Foodlron": "철분2",
+      "Foodpotassium": "칼륨2",
+      "Foodsalt": "나트륨2"
+    },
+    {
+      "id": 3,
+      "FoodName": "음식3",
+      "FooodImage": "http://via.placeholder.com/160",
+      "Foodingredient": "재료3",
+      "FoodProfile": "설명3",
+      "Foodcalorie": "칼로리3",
+      "Foodprotein": "단백질3",
+      "Foodfat": "지방3",
+      "Foodcarbohydrate": "탄수화물3",
+      "Foodsugars": "당류3",
+      "Foodcalcium": "칼슘3",
+      "Foodlron": "철분3",
+      "Foodpotassium": "칼륨3",
+      "Foodsalt": "나트륨3"
+    },
+    {
+      "id": 4,
+      "FoodName": "음식4",
+      "FooodImage": "http://via.placeholder.com/160",
+      "Foodingredient": "재료4",
+      "FoodProfile": "설명4",
+      "Foodcalorie": "칼로리4",
+      "Foodprotein": "단백질4",
+      "Foodfat": "지방4",
+      "Foodcarbohydrate": "탄수화물4",
+      "Foodsugars": "당류4",
+      "Foodcalcium": "칼슘4",
+      "Foodlron": "철분4",
+      "Foodpotassium": "칼륨4",
+      "Foodsalt": "나트륨4"
+    },
+    {
+      "id": 5,
+      "FoodName": "음식5",
+      "FooodImage": "http://via.placeholder.com/160",
+      "Foodingredient": "재료5",
+      "FoodProfile": "설명5",
+      "Foodcalorie": "칼로리5",
+      "Foodprotein": "단백질5",
+      "Foodfat": "지방5",
+      "Foodcarbohydrate": "탄수화물5",
+      "Foodsugars": "당류5",
+      "Foodcalcium": "칼슘5",
+      "Foodlron": "철분5",
+      "Foodpotassium": "칼륨5",
+      "Foodsalt": "나트륨5"
+    }
+  ],
+  "Users": [
+    {
+      "id": 1,
+      "email": "test1@google.com",
+      "password": "11111aaaa",
+      "nickname": "user1"
+    },
+    {
+      "id": 2,
+      "email": "test2@google.com",
+      "password": "22222bbbb",
+      "nickname": "user2"
+    },
+    {
+      "id": 3,
+      "email": "test3@google.com",
+      "password": "33333bbbb",
+      "nickname": "user3"
+    }
+  ],
+  "images": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
     }
   ]
-
 }

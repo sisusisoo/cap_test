@@ -6,8 +6,8 @@ import java.io.File;
 public class Client {
 	Socket socket = null;
 	//String serverIp = "172.31.32.190";
-	//String serverIp = "192.168.0.14";
-	String serverIp = "172.16.3.103";
+	String serverIp = "192.168.0.14";
+
 	//String serverIp ="13.209.22.163";
 	int serverPort = 8000;
 	String fileName;

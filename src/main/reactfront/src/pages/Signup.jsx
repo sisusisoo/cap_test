@@ -1,6 +1,7 @@
 import React, {useState,useEffect } from 'react';
 import styled from "styled-components";
 import axios from 'axios';
+import { FaCheck } from "react-icons/fa";
 
 const Wrapper = styled.div`
   position: relative;
@@ -212,26 +213,94 @@ const SubmitButton = styled.button`
   border-radius: 20px;
 `;
 
+const EmailDouble = styled.button`
+  position: absolute;
+  width: 229px;
+  height: 50px;
+  left: 766px;
+  top: 273px;
+  background: #FBCCCC;
+  border-radius: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23.5872px;
+  line-height: 29px;
+  text-align: center;
+  color: #000000;
+
+`;
+
+const NicknameButton = styled.button`
+  position: absolute;
+  width: 229px;
+  height: 50px;
+  left: 766px;
+  top: 752px;
+  background: #FBCCCC;
+  border-radius: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23.5872px;
+  line-height: 29px;
+  text-align: center;
+  color: #000000;
+
+`;
+
+const DoubleTextE = styled.span`
+  position: absolute;
+  width: 252px;
+  height: 29px;
+  left: 1000px;
+  top: 282px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23.5872px;
+  line-height: 29px;
+  color: #000000;
+`;
+
+const DoubleTextNic = styled.span`
+  position: absolute;
+  width: 252px;
+  height: 29px;
+  left: 1000px;
+  top: 762px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23.5872px;
+  line-height: 29px;
+  color: #000000;
+`;
+
 function Signup () {
   const logo = "/img/logo.png"
 
   //초기값 세팅
-  const [email, setEmail] = useState(' ');
-  const [password, setPassword] = useState(' ');
-  const [passwordConfirm, setPasswordConfirm] = useState(' ');
-  const [nickname, setNickname] = useState(' ');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [nickname, setNickname] = useState('');
 
   //오류메시지 상태 저장 
-  const [emailMessage, setEmailMessage] = useState(" ");
-  const [passwordMessage, setPasswordMessage] = useState(" ");
-  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState(" ");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
 
   //유효성 상태 저장
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIspassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-  const [notAllow, SetNotAllow] = useState(true);
+  const [notAllow, SetNotAllow] = useState(true); //초기상태 = 버튼 비활성화 
 
+  //이메일, 닉네임 중복 상태 저장
+  const [doubleEmail, setDoubleEmail] = useState(true);
+  const [doubleNickname, setDoubleNickname] = useState(true);
 
   //이메일 유효성 검사 
   const ValidEmail = (email) => {
@@ -279,6 +348,7 @@ function Signup () {
     else {
       setPasswordMessage("Secure Password");
       setIspassword(true);
+
     }
   };
 
@@ -305,36 +375,59 @@ function Signup () {
     setNickname(currentNickname);
   };
 
-  useEffect ( () => {
-    if(isEmail && isPassword && isPasswordConfirm) {
-      SetNotAllow(true);
+ useEffect ( () => {
+    if(isEmail && isPassword && isPasswordConfirm&&!doubleEmail&&!doubleNickname) {
+      SetNotAllow(false); //버튼 활성화 
       return;
     }
-    SetNotAllow(false);
+    SetNotAllow(true);
 
-  },[isEmail,isPassword,isPasswordConfirm])
+  },[isEmail,isPassword,isPasswordConfirm,doubleEmail,doubleNickname])
 
   //axios를 이용해 버튼 클릭시 데이터 전송
-  const handleSubmitbutton =() => {
-    const url = "http://localhost:3000/Users";
-    const payload = {
-      email,
-      password
+  const handleSubmitbutton = async(e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:3001/Users", {email,password,nickname});
+      alert("Signup success! Please Login");
+    }catch (error) {
+      alert("Signup Error", error);
     }
-    axios.post(url,payload, {
-      headers: {
-        'Content-Type':'application/json',
-      }
-    })
-    .then(res => {
-      console.log(res.data);
-      alert("Signup Success");
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    
   };
 
+  //이메일 중복 검사 
+  const checkEmailDuplicate = () => {
+      axios.get(`http://localhost:3001/users?email=${email}`)
+    .then((res)=> {
+      if(res.data.length >0) {
+        setDoubleEmail(true);
+      }
+      else {
+        setDoubleEmail(false);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+
+  };
+
+  //닉네임 중복 검사 
+  const checkNicknameDuplicate = () => {
+    axios.get(`http://localhost:3001/users?nickname=${nickname}`)
+    .then((res)=> {
+      if(res.data.length>0) {
+        setDoubleNickname(true);
+      }
+      else {
+        setDoubleNickname(false);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }
 
   return (
     <Wrapper>
@@ -346,7 +439,12 @@ function Signup () {
        id="email"
        value={email}
        onChange={handleEmail}
+       required={true}
        type="text" />
+
+       <EmailDouble type="button" onClick={checkEmailDuplicate}>Double Check</EmailDouble>
+       {doubleEmail?(<DoubleTextE>중복된 이메일 입니다.</DoubleTextE>):
+       (<DoubleTextE><FaCheck color="red" size={30}/></DoubleTextE>)}
 
        <EmailError>
         {emailMessage}
@@ -357,6 +455,7 @@ function Signup () {
         id="password"
         value={password}
         onChange={handlePassword}
+        required={true}
         type="password" />
 
         <PsError>
@@ -368,6 +467,7 @@ function Signup () {
           id="passwordConfirm"
           value={passwordConfirm}
           onChange={handlePasswordConfirm}
+          required={true}
           type="password"/>
 
           <PscError>
@@ -379,7 +479,12 @@ function Signup () {
             id="nickname"
             value={nickname}
             onChange={handleNickname}
+            required={true}
             type="text"/>
+          <NicknameButton type="button" onClick={checkNicknameDuplicate}>Double Check</NicknameButton>
+          {doubleNickname ?(<DoubleTextNic>중복된 닉네임 입니다.</DoubleTextNic>):
+          (<DoubleTextNic><FaCheck color="red" size={30}/></DoubleTextNic>)}
+
 
         <SubmitButton 
           formMethod='post'

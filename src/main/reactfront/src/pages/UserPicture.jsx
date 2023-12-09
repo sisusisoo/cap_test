@@ -1,14 +1,13 @@
 import React from 'react';
-import Camera from '../components/Camera';
 import styled from 'styled-components';
+import BottomNav from '../components/common/BottomNav';
+import Backbutton from "../components/common/Backbutton";
+import Header from '../components/common/Header';
+import ImageUpload from '../components/ImageUpload';
 
 const Wrapper = styled.div`
-    
-    position: relative;
     width: 1440px;
     height: 1024px;
-    margin: 0 auto;
-
 `;
 
 const Texts = styled.div`
@@ -23,10 +22,13 @@ const UserPicture = () => {
 
     return (
         <Wrapper>
+            <Header/>
+            <Backbutton/>
             <Texts>
                 <p>Please take a picture of the menu</p>
             </Texts>
-            <Camera />
+            <ImageUpload />
+            <BottomNav/>
         </Wrapper>
     );
 };

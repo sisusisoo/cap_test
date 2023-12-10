@@ -99,7 +99,7 @@ const MenuDetail = () => {
              <>
                 <h2>{food.id}</h2>
                 <img src={food.foodimagepath} alt={food.caption} />
-                <h1>{food.foodname}</h1>
+                <h1>{food.korfoodname}</h1>
              </>
             <div>
             <ButtonGroup>

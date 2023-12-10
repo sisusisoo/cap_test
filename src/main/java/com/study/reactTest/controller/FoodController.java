@@ -30,8 +30,10 @@ public class FoodController {
 
         for (FoodDTO foodDTO : foodDtoList) {
             System.out.println("ID: " + foodDTO.getId());
+            System.out.println("KorName: " + foodDTO.getKorfoodname());//추가
             System.out.println("Name: " + foodDTO.getFoodname());
-            System.out.println("Foodimagepath: " + foodDTO.getFoodimagepath());
+            //System.out.println("Foodimagepath: " + foodDTO.getFoodimagepath());//수정
+            System.out.println("Foodimage: " + foodDTO.getFoodimage());
             System.out.println("Foodingredient: " + foodDTO.getFoodingredient());
             System.out.println("Foodprofile: " + foodDTO.getFoodprofile());
             System.out.println("Foodcalorie: " + foodDTO.getFoodcalorie());
@@ -54,6 +56,7 @@ public class FoodController {
         Long foodId = Long.parseLong(id);
         FoodDTO foodDTO = foodService.getFoodInfo(foodId);
         System.out.println("Menu Detail[FoodName]" + foodDTO.getFoodname());
+        System.out.println("Menu Detail[FoodName]" + foodDTO.getKorfoodname());//추가
         return foodDTO;
     }
 }

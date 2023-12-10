@@ -15,15 +15,24 @@ public class FoodEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "Korfoodname", length = 255)
+    private String korfoodname;//추가
     @Column(name = "Foodname", length = 255)
     private String foodname;
 
     @Column(name = "Foodingredient", length = 255)
     private String foodingredient;
-
+/*
     @Lob
     @Column(name = "Foodimagepath")
     private String foodimagepath;
+
+
+ *///수정
+    @Lob
+    @Column(name = "Foodimage")
+    private String foodimage;
+
 
     @Column(name = "Foodprofile", columnDefinition = "text")
     private String foodprofile;
@@ -60,13 +69,15 @@ public class FoodEntity {
         // 기본 생성자 내용이 필요하면 여기에 추가할 수 있습니다.
     }
     @Builder
-    public FoodEntity(Long Id, String Foodname, String Foodimage, String Foodingredient,
+    public FoodEntity(Long Id, String Korfoodname,String Foodname, String Foodimage, String Foodingredient,
                       String Foodprofile, Double Foodcalorie, Double Foodprotein, Double Foodfat,
                       Double Foodcarbohydrate, Double Foodsugars, Double Foodcalcium, Double Foodiron,
                       Double Foodpotassium, Double Foodsalt) {
         this.id = Id;
+        this.korfoodname = Korfoodname;
         this.foodname = Foodname;
-        this.foodimagepath = Foodimage;
+        //this.foodimagepath = Foodimage;
+        this.foodimage = Foodimage;
         this.foodingredient = Foodingredient;
         this.foodprofile = Foodprofile;
         this.foodcalorie = Foodcalorie;
@@ -86,7 +97,8 @@ public class FoodEntity {
 
         dto.setId(foodEntity.getId());
         dto.setFoodname(foodEntity.getFoodname());
-        dto.setFoodimagepath(foodEntity.getFoodimagepath());
+        dto.setFoodimage(foodEntity.getFoodimage());
+        //dto.setFoodimagepath(foodEntity.getFoodimagepath());
         dto.setFoodingredient(foodEntity.getFoodingredient());
         dto.setFoodprofile(foodEntity.getFoodprofile());
         dto.setFoodcalorie(foodEntity.getFoodcalorie());

@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface FoodRepository extends JpaRepository<FoodEntity, Long>{
     List<FoodEntity> findByfoodname(String keyword);
-
+    List<FoodEntity> findBykorfoodname(String keyword);
     Optional<FoodEntity> findById(Long id);
     // food.id 를 통한 검색
 }

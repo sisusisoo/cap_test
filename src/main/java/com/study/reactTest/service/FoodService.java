@@ -55,8 +55,8 @@ public class FoodService {
         List<FoodEntity> food = null;
         List<FoodDTO> foodDtoList = new ArrayList<>();
         for (int i = 0; i < keyword.length; i++) {  // for문을 이용해서 배열의 처음부터 끝까지 차례대로 음식이름에 해당하는 음식 데이터를 가져옴.
-            food = foodRepository.findByfoodname(keyword[i]);
-
+            //food = foodRepository.findByfoodname(keyword[i]);//수정
+            food = foodRepository.findBykorfoodname(keyword[i]);
             System.out.println("Food List for " + keyword[i] + ": " + Arrays.toString(food.toArray()));
 
             for (FoodEntity foodentity : food) {
@@ -69,8 +69,10 @@ public class FoodService {
     private FoodDTO convertEntityToDto(FoodEntity foodentity){
         return FoodDTO.builder()
                 .Id(foodentity.getId())
+                .Korfoodname(foodentity.getKorfoodname())
                 .Foodname(foodentity.getFoodname())
-                .Foodimage(foodentity.getFoodimagepath())
+                //.Foodimage(foodentity.getFoodimagepath())//수정
+                .Foodimage(foodentity.getFoodimage())
                 .Foodingredient(foodentity.getFoodingredient())
                 .Foodprofile(foodentity.getFoodprofile())
                 .Foodcalorie(foodentity.getFoodcalorie())

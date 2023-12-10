@@ -11,8 +11,10 @@ import java.util.Base64;
 @Setter
 public class FoodDTO {
     private Long Id;
+    private String korfoodname;//추가
     private String foodname;
-    private String foodimagepath;
+   // private String foodimagepath;//수정
+    private String foodimage;
     private String foodingredient;
     private String foodprofile;
     private Double foodcalorie;
@@ -28,8 +30,10 @@ public class FoodDTO {
     public FoodEntity toEntity(){
         FoodEntity build = FoodEntity.builder()
                 .Id(Id)
+                .Korfoodname(korfoodname)
                 .Foodname(foodname)
-                .Foodimage(foodimagepath)
+                //.Foodimage(foodimagepath)//수정
+                .Foodimage(foodimage)
                 .Foodingredient(foodingredient)
                 .Foodprofile(foodprofile)
                 .Foodcalorie(foodcalorie)
@@ -49,13 +53,15 @@ public class FoodDTO {
 
     }
     @Builder
-    public FoodDTO(Long Id, String Foodname, String Foodingredient, String Foodimage,
+    public FoodDTO(Long Id, String Korfoodname,String Foodname, String Foodingredient, String Foodimage,
                       String Foodprofile, Double Foodcalorie, Double Foodprotein, Double Foodfat,
                       Double Foodcarbohydrate, Double Foodsugars, Double Foodcalcium, Double Foodiron,
                       Double Foodpotassium, Double Foodsalt){
         this.Id = Id;
+        this.korfoodname = Korfoodname;
         this.foodname = Foodname;
-        this.foodimagepath = Foodimage;
+        //this.foodimagepath = Foodimage;//수정
+        this.foodimage = Foodimage;
         this.foodingredient = Foodingredient;
         this.foodprofile = Foodprofile;
         this.foodcalorie = Foodcalorie;

@@ -1,0 +1,21 @@
+.InputStyle  {
+    position: absolute;
+    top: 70px;
+    left: 200px;
+    width: 800px;
+    height: 40px;
+    margin: 10px 0 30px 10px;
+    padding: 5px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 2;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.SearchButton {
+    position:absolute;
+    height: 198px;
+    left:980px;
+    z-index: 2;
+}

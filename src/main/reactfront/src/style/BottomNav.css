@@ -1,0 +1,30 @@
+.Wrapper {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:70px;
+
+}
+
+nav {
+    text-align: center;
+    overflow:hidden;
+    border-top:2px solid #D8D8D8;
+}
+
+.nav-link {
+    float:left;
+    width:25%;
+
+    height:45px;
+    line-height:45px
+}
+
+.nav-item {
+    color:black;
+}
+
+.active {
+    color:#ef5c89;
+}

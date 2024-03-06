@@ -120,7 +120,10 @@ function Home() {
       <Wrapper>
       <Styledlogo img src={logo} alt=" "/>
       <StyledButtonL title="로그인" onClick={()=>{navigate("login");}}>Login</StyledButtonL>
+
       <StyledButtonS title="회원가입" onClick={()=>{navigate("signup");}}>Signup</StyledButtonS>
+
+
     </Wrapper>
     
   )

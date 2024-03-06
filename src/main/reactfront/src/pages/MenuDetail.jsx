@@ -15,10 +15,8 @@ const DetailBlock = styled.div`
     text-align: center;
     img {
         display:block;
-        width: 700px;
-        height: 394px;
-        left: 175px;
-        margin: 0 auto;
+        width: 90vw;
+        height: 30vh;
         border-radius: 10px;
     }
 
@@ -26,7 +24,8 @@ const DetailBlock = styled.div`
         border: 3px solid #fff;
         border-radius: 5px;
         color: black;
-        font-size:30px;
+        font-size:5vw;
+        margin:1vw;
         border:none;
         background-color:black;
         color:white;
@@ -60,7 +59,8 @@ const MenuDetail = () => {
     useEffect(() => {
         const getData = async() => {
             try {
-                const response = await axios.post('http://localhost:8080/food', id);      
+                //const response = await axios.post('http://3.38.242.35:8080/food', id);
+                const response = await axios.post('http://localhost:8080/food', id);
                 // 서버 응답에서 파일 경로를 콘솔에 출력
 
                 console.log('Server Response:', response.data);

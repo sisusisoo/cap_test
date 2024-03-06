@@ -6,16 +6,17 @@ import Header from '../components/common/Header';
 import ImageUpload from '../components/ImageUpload';
 
 const Wrapper = styled.div`
-    width: 1440px;
-    height: 1024px;
+  width:100%;
+  height:100%;
 `;
 
 const Texts = styled.div`
-    font-size: 70px;
-    font-weight:bold;
-    width:1300px;
-    margin:0 auto;
-
+    font-size:5vw;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    text-align: center;
+    margin-top:18%
 `;
 
 const UserPicture = () => {

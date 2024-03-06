@@ -6,9 +6,9 @@ import java.io.File;
 public class Client {
 	Socket socket = null;
 	//String serverIp = "172.31.32.190";
-	String serverIp = "192.168.0.14";
-
-	//String serverIp ="13.209.22.163";
+	//String serverIp = "192.168.0.14";
+	String serverIp = "localhost";
+	//String serverIp ="3.38.242.35";
 	int serverPort = 8000;
 	String fileName;
 	String result;
@@ -34,7 +34,9 @@ public class Client {
 			//여기서 삭제하면 될듯 filename이 경로인듯함
 			File file = new File(fileName);
 			if( file.exists() ){
-				if(file.delete()){
+				System.out.println("임시파일 있음");
+				if(true){
+				//if(file.delete()){
 					System.out.println("임시파일삭제 성공");
 				}else{
 					System.out.println("임시파일삭제 실패");

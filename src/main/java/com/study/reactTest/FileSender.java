@@ -83,7 +83,7 @@ class FileSender extends Thread {
 	public void run() {
 		try {
 			sendFileSize(filename);
-			receiveData(1000);// 수정 --------------
+			receiveData(1000);// 수정 --2024/03/04
 			sendImage(fileSize);
 			result = receiveData(1000);
 

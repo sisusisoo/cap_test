@@ -4,3 +4,26 @@ filedata
 수정
 
 로컬호스트용
+
+-최종버전
+
+docker에 올릴때 수정 목록
+
+
+
+java*
+
+client(ip)
+handlerfile(savefolder)
+
+
+react*
+filedata &
+imageupload("13.209.22.163")
+menudetail("13.209.22.163")
+menudlist("13.209.22.163")
+
+
+DB 체크*
+user
+url

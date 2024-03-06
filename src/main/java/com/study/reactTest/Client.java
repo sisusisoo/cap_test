@@ -35,8 +35,8 @@ public class Client {
 			File file = new File(fileName);
 			if( file.exists() ){
 				System.out.println("임시파일 있음");
-				if(true){
-				//if(file.delete()){
+				//if(true){//이건 임시파일 삭제 안할떄 디버깅용
+				if(file.delete()){
 					System.out.println("임시파일삭제 성공");
 				}else{
 					System.out.println("임시파일삭제 실패");

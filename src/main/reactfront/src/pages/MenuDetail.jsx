@@ -59,8 +59,8 @@ const MenuDetail = () => {
     useEffect(() => {
         const getData = async() => {
             try {
-                //const response = await axios.post('http://3.38.242.35:8080/food', id);
                 const response = await axios.post('http://localhost:8080/food', id);
+                //const response = await axios.post('http://ketchup-cap.iptime.org:8080/food', id);
                 // 서버 응답에서 파일 경로를 콘솔에 출력
 
                 console.log('Server Response:', response.data);

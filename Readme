@@ -14,7 +14,8 @@ docker에 올릴때 수정 목록
 java*
 
 client(ip)
-handlerfile(savefolder)
+handlerfile
+
 
 
 react*
@@ -27,3 +28,10 @@ menudlist("13.209.22.163")
 DB 체크*
 user
 url
+
+프로젝트 옮길때 주의 사항
+root/saveFolder를 만들어 주거나 수정 해줘야함
+핸들러
+			fileFullPath =   "C:/saveFolder/" + saveFileName;//최신
+			//fileFullPath =   "/root/saveFolder/" + saveFileName;
+			이부분

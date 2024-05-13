@@ -28,9 +28,9 @@ function FileData() {
         "Content-Type": `multipart/form-data; `,
       },
 
-   baseURL: 'http://localhost:8080'
+  // baseURL: 'http://localhost:8080'
    //baseURL: 'http://192.168.0.14:8080'
-   //baseURL: 'http://3.38.242.35:8080'//이걸로 했을때 들어감
+   baseURL: 'http://211.107.143.216:8080'//이걸로 했을때 들어감
 
 
     })

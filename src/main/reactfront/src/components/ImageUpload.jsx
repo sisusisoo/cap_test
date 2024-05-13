@@ -131,7 +131,8 @@ const OnUpload = async () => {
 
        //  const formData = new FormData();
          // formData.append("image",);
-          await axios.post('http://localhost:8080/upload.do',formData);
+          //await axios.post('http://ketchup-cap.iptime.org:8080/upload.do',formData);//수정
+          await axios.post('http://localhost:8080/upload.do',formData);//수정
           navigate('/picture/menu');
       } catch(error) {
           console.error(error);

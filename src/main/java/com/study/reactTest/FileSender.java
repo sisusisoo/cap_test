@@ -9,7 +9,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-class FileSender extends Thread {
+class
+FileSender extends Thread {
 	private Socket socket;
 	private FileInputStream fis;
 	private BufferedOutputStream bos;

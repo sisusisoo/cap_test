@@ -99,8 +99,8 @@ const MenuList = () => {
       // Fetch data when the component mounts
       const fetchData = async () => {
         try {
-          //const response = await axios.post('http://3.38.242.35:8080/compare-food', {
           const response = await axios.post('http://localhost:8080/compare-food', {
+          //const response = await axios.post('http://ketchup-cap.iptime.org:8080/compare-food', {
             foodName: foodName, // Set an empty string or any default value as needed
           });
   

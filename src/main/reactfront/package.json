@@ -54,5 +54,6 @@
   },
   "devDependencies": {
     "@types/navermaps": "^3.7.2"
-  }
+  },
+  "proxy": "https://www.newspeak.kr"
 }

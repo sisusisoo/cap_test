@@ -8,7 +8,6 @@ public class Client {
 	//String serverIp = "172.31.32.190";
 	//String serverIp = "211.107.143.216";
 	String serverIp =IP.ip;
-	//String serverIp ="3.38.242.35";
 	int serverPort = 8000;
 	String fileName;
 	String result;
@@ -26,6 +25,7 @@ public class Client {
 			fileSender.start();//run() 스레드
 			fileSender.join();//스레드 관련
 			result = fileSender.getResult();//여기에서 음식정보 받아옴!!
+			//System.out.println("debug"+result);//디버깅용 여기까진 문제없음
 			//정적 변수에 저장
 			StaticData.FoodList=result;
 

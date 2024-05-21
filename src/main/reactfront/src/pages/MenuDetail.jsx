@@ -9,6 +9,8 @@ import Receipe from '../components/Receipe';
 import BottomNav from '../components/common/BottomNav';
 import Header from "../components/common/Header";
 import Backbutton from "../components/common/Backbutton";
+import {DeployIP,DevIP} from "../DeploySetting"
+
 
 const DetailBlock = styled.div`
     margin: 0 auto;
@@ -59,8 +61,8 @@ const MenuDetail = () => {
     useEffect(() => {
         const getData = async() => {
             try {
-                const response = await axios.post('http://localhost:8080/food', id);
-                //const response = await axios.post('http://ketchup-cap.iptime.org:8080/food', id);
+                const response = await axios.post(DevIP+'/food', id);
+
                 // 서버 응답에서 파일 경로를 콘솔에 출력
 
                 console.log('Server Response:', response.data);

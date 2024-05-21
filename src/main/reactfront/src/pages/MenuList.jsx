@@ -6,6 +6,7 @@ import MenuItem from '../components/MenuItem';
 import BottomNav from '../components/common/BottomNav';
 import Header from "../components/common/Header";
 import Backbutton from "../components/common/Backbutton";
+import {DeployIP,DevIP} from "../DeploySetting";
 
 const MenuBlock = styled.div`
     .logo {
@@ -99,8 +100,7 @@ const MenuList = () => {
       // Fetch data when the component mounts
       const fetchData = async () => {
         try {
-          const response = await axios.post('http://localhost:8080/compare-food', {
-          //const response = await axios.post('http://ketchup-cap.iptime.org:8080/compare-food', {
+          const response = await axios.post(DevIP+'/compare-food', {
             foodName: foodName, // Set an empty string or any default value as needed
           });
   

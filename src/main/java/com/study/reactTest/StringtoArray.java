@@ -7,10 +7,11 @@ public class StringtoArray {
         String foodString =StaticData.FoodList;
         // 현재는 임의로 감자탕이랑 닭곰탕으로 지정해놓음.
         // 이부분은 나중에 전달받은 스트링을 함수변수로 받아오면 됨.
-        String[] arr = foodString.split(" "); // 공백 2개
+        String[] arr = foodString.split("  "); // 공백 2개//5월15일 이게 문제였음
+
 
         for (String item : arr) {
-            System.out.println(item);
+            System.out.println(item);//컨트롤러4다음
         }
         return arr;
     }

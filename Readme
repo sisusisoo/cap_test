@@ -23,6 +23,7 @@ filedata &
 imageupload("13.209.22.163")
 menudetail("13.209.22.163")
 menudlist("13.209.22.163")
+CommonFunction
 
 
 DB 체크*

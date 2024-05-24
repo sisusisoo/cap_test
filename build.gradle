@@ -41,7 +41,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-def frontendDir = "$projectDir/src/main/reactfront"
+def frontendDir = "$projectDir/src/main/ketchup"
 
 sourceSets {
 	main {

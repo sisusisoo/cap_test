@@ -1,33 +1,36 @@
 package com.study.reactTest.controller;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import com.study.reactTest.dto.FoodDTO;
 import com.study.reactTest.StringtoArray;
 import com.study.reactTest.service.FoodService;
-import org.springframework.ui.Model;
-
-import java.util.Base64;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 @RestController
+@RequestMapping("/images")
 @RequiredArgsConstructor // 롬복에서 제공하는 어노테이션
 public class FoodController {
     // 생성자 주입
     private final FoodService foodService; // 이 필드를 매개변수로하는 컨트롤러 생성자를 만들어줌
 
-    @PostMapping("/compare-food")
-    public List<FoodDTO> compareFood(@RequestBody String foodName) {
-
-        String[] array = StringtoArray.stringToArray();  // 배열 만들어서 안에 음식이름 차례대로 삽입
+    @PostMapping("/upload")
+    public List<FoodDTO> compareFood(@RequestParam("image") MultipartFile image) {
+        try {
+            byte[] imageData = image.getBytes(); // 받아온 이미지 데이터
+            // 여기에 Python OCR 연동 코드를 추가하시면 됩니다
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return List.of(); // 빈 리스트 반환
+        }
+        String foodString = "불고기 김치 잡채 된장찌개 삼겹살 짱통";
+        String[] array = StringtoArray.stringToArray(foodString);  // 배열 만들어서 안에 음식이름 차례대로 삽입
         List<FoodDTO> foodDtoList = foodService.searchFood(array);  // 리스트 만들어서 서비스 이용해서 해당 음식 데이터 가져오기
 
         for (FoodDTO foodDTO : foodDtoList) {

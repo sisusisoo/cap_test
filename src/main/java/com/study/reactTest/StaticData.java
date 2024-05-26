@@ -1,6 +1,6 @@
 package com.study.reactTest;
 
 public class StaticData {
-    static String FoodList="";
+    static String FoodList=""; // ocr 결과
 
 }

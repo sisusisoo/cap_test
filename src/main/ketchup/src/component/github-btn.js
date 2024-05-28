@@ -4,14 +4,14 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Button = styled.span`
-    margin-top: 50px;
+    margin-top: 10%;
     background-color: white;
     font-weight: 500;
-    width: 50%;
+    width: 60%;
     color: black;
     font-weight: bold;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 1vh;
     border: 2px solid black; /* 경계 추가 */
     display: flex;
     gap: 5px;

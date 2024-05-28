@@ -26,10 +26,8 @@ function App() {
           <Routes>
             <Route index element={<Main />} />
             <Route path="/kakaoMap" element={<KakaoMap />} /> {/* KakaoMap 컴포넌트 라우트 추가 */}
-            <Route path="/main/picture" element={<UserPicture />} />
             <Route path="/menulist/:id" element={<MenuList />} />
             <Route path="/menulist/:id/:Food_id" element={<MenuDetail />} />
-
           </Routes>
           <BottomNav />
         </BrowserRouter>

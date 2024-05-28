@@ -9,8 +9,7 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
+  height: 55px;
 `;
 
 const BottomNav = () => {
@@ -40,13 +39,15 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Camera"
           value="camera"
-          icon={<MdCameraAlt size={40}/>}
-          component={Link}
+          icon={<MdCameraAlt size={40} />}
+          component={Link} // Link로 변경
           to="/main/picture"
         />
         <BottomNavigationAction
           label="Tema"
           value="tema"
+          component={Link}
+          to="/photo" // 링크의 목적지 설정
           icon={<MdWidgets size={40} />}
         />
         <BottomNavigationAction

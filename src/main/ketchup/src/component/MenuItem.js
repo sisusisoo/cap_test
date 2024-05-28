@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { FaSearchPlus } from "react-icons/fa";
-import {DeployIP,DevIP} from "../DeploySetting";
 
 const Box = styled.div`
   width: 90vw;
@@ -53,17 +52,17 @@ const Wrapper = styled.div`
 
 const MenuItem = () => {
   const { id } = useParams();
-  const [foodList, setFoodList] = useState([]);
-  const foodName="";
+  const [food, setFood] = useState([]);
+
   useEffect(() => {
     //id에 해당하는 음식 데이터 가져오기
     axios
-      .get(DevIP+"/compare-food",{foodName: foodName,})
+      .get(`http://localhost:8080/Restaruant/${id}`)
       .then((res) => {
         const resData = res.data;
 
         //가져온 음식 데이터 설정
-        setFoodList(resData);
+        setFood(resData.food);
       })
       .catch((error) => {
         alert("데이터를 가져오는 데 실패했습니다", error);
@@ -73,21 +72,21 @@ const MenuItem = () => {
   return (
     <>
       <div>
-        {foodList.map((food) => (
-          <Box key={food.Id}>
+        {food.map((item) => (
+          <Box key={item.Food_id}>
             <div>
               <Wrapper>
                 <img
                   className="image"
-                  src={food.foodImage}
-                  alt={food.caption}//?
+                  src={item.FoodImage}
+                  alt={item.caption}
                 />
                 <div className="container">
-                  <h2 className="Name">{food.foodname}</h2>
-                  <p className="description">{food.foodprofile}</p>
+                  <h2 className="Name">{item.FoodName}</h2>
+                  <p className="description">{item.FoodProfile}</p>
                   <Link
-                    to={`/main/menulist/${id}/${food.Id}`}
-                    key={food.Id}
+                    to={`/main/menulist/${id}/${item.Food_id}`}
+                    key={item.Food_id}
                   >
                     <div className="search">
                       <FaSearchPlus size={25} />

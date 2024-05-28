@@ -10,11 +10,18 @@ const Wrapper = styled.div`
 
 function RestaurantList({ type }) {
   const [restaurants, setRestaurants] = useState([]);
-  const [keyword, setKeyword] = useState("all");
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    console.log(type);
-    setKeyword(type);
+    //console.log(type);
+    if (type === "all") {
+      // type이 "all"인 경우 keyword를 설정하지 않음
+      setKeyword("");
+    } else {
+      // type이 "all"이 아닌 경우에는 keyword를 설정
+      setKeyword(type);
+    }
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {

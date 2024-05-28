@@ -2,8 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Splash from "./pages/Splash";
 import Main from "./pages/Main";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MenuList from "./pages/MenuList";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import MenuDetail from "./pages/MenuDetail";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -11,9 +10,14 @@ import KakaoMap from "./pages/KakaoMap";
 import { auth } from "./firebase";
 import BottomNav from "./component/Common/BottomNav";
 import GoogleMap from "./pages/GoogleMap";
-import UserPicture from "./pages/UserPicture";
+import ResInfo from "./component/ResInfo";
+import { MenuList } from "@mui/material";
+import PhotoField from "./component/PhotoField";
+import MenuCapture from "./pages/MenuCapture";
+import MenuRestructure from "./pages/MenuRestructure";
 
 function App() {
+  const { place_id } = useParams();
   const [loading, setLoading] = useState(true);
   const init = async () => {
     // wait for firebase 
@@ -45,10 +49,16 @@ function App() {
             <Route path="/main" element={<Main />} />
             <Route path="/googleMap" element={<GoogleMap />} />
             <Route path="/kakaoMap" element={<KakaoMap />} />
-            <Route path="/menulist/:id" element={<MenuList />} />
+            <Route path="/main/menulist/:place_id" element={<MenuList />} />
             <Route path="/menulist/:id/:Food_id" element={<MenuDetail />} />
-            <Route path="/main/picture" element={<UserPicture />} />
+            <Route path="/photo" element={<PhotoField />} />
+            <Route path="/main/picture" element={<MenuCapture />} />
+            <Route
+                path="/main/picture/restructure"
+                element={<MenuRestructure />}
+              />
           </Routes>
+          <ResInfo />
           <BottomNav />
         </BrowserRouter>
       )}

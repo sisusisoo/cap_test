@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 450px;
+  width: 100%;
   padding: 50px 0px;
   margin: 0 auto; /* 왼쪽과 오른쪽을 자동으로 마진을 설정하여 가운데 정렬 */
 `;
@@ -30,19 +30,19 @@ export const Form = styled.form`
 export const Input = styled.input`
   padding: 1vh;
   border-radius: 1vh;
-  width: 95%;    
+  width: 80%;    
   font-size: 2.5vh;    
   &[type="submit"] {// type이 submit이라면 cursor를 pointer로 바꾸기
     margin-top: 20px;
-    width: 70%;
     cursor:pointer; 
+    width: 85%;  
     &:hover{     // 사용자가 마우스를 해당 요소 위로 올렸을 때 적용되는 스타일을 지정
         background-color: #c35050;
     }
-    border-radius: 3vh;
+    border-radius: 1vh;
     background-color: #ffffff;
     padding: 1vh 3vh;
-    font-size: 3vh;
+    font-size: 2.5vh;
   }
   color: black;
   font-weight: bold;

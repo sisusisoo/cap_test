@@ -10,6 +10,8 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
   height: 55px;
+  border-top: 1px solid #dee2e6;
+  z-index: 3;
 `;
 
 const BottomNav = () => {

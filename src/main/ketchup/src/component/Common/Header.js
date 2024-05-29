@@ -6,7 +6,7 @@ const HeaderBlock = styled.div`
   position: fixed;
   width: 100%;
   background: white;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #dee2e6; /* 얇은 밑줄 추가 */
   z-index: 3; /* 가장 높은 레이어 */
 `;
 

@@ -27,10 +27,10 @@ export const getSpeech = (text) => {
       utterThis.lang = lang;
       utterThis.rate = rate;
       // voice list가 비어있으면 오류를 reject
-      if (voices.length === 0) {
-        alert("Voice list is empty");
-        return;
-      }
+      //if (voices.length === 0) {
+        // alert("Voice list is empty");
+        //return;
+      //}
       /* 
           영어 vocie 찾기
           디바이스 별로 한국어는 ko-KR 또는 ko_KR로 voice가 정의되어 있다.

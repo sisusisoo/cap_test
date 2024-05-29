@@ -82,7 +82,7 @@ const ImageUpload = ({ id }) => {
                  foodName: foodName, // Set an empty string or any default value as needed
                });
        const foodNamesList = response.data; // 서버로부터 받은 음식 이름 리스트
-       console.log(foodNamesList);
+       // console.log(foodNamesList);
        gotoMenuList(foodNamesList); // 음식 이름 리스트 전달
 
 

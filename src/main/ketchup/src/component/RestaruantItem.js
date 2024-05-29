@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Star from "./Star";
 
@@ -21,9 +21,8 @@ const Container = styled.div`
     object-fit: cover;
     width: 150px;
     height: 150px;
-    float:left; /* 화면에 꽉 차게 설정 */
+    float: left; /* 화면에 꽉 차게 설정 */
     margin: 1%;
-
   }
 
   .name {
@@ -57,13 +56,12 @@ const Container = styled.div`
       color: #444;
     }
   }
-
 `;
 
 // 레스토랑 항목을 나타내는 함수형 컴포넌트
 function RestaurantItem({ restaurant, distance }) {
   const {
-    place_id, // 장소 id 
+    place_id, // 장소 id
     name,
     rating,
     user_ratings_total,
@@ -73,23 +71,39 @@ function RestaurantItem({ restaurant, distance }) {
   return (
     <>
       <Container>
-        <StyledLink to={`/main/menulist/${place_id}?name=${name}&star=${rating}&location=${vicinity}&img=${photos}`}>
-          <img src={photos ? photos[0].getUrl() : "http://via.placeholder.com/160"} alt={name} />
-          <p className="name">{name.length > 20 ? `${name.slice(0, 20)}...` : name}</p>
+        <StyledLink
+          to={`/main/menulist/${place_id}?name=${name}&star=${rating}&location=${vicinity}&img=${photos}`}
+        >
+          <img
+            src={photos ? photos[0].getUrl() : "http://via.placeholder.com/160"}
+            alt={name}
+          />
+          <p className="name">
+            {name.length > 20 ? `${name.slice(0, 20)}...` : name}
+          </p>
           <div className="box">
             <div className="star">
-              <Star rating = {rating} color="yellow" style={{ fontSize: "1.5em" }} />
+              <Star
+                rating={rating}
+                color="yellow"
+                style={{ fontSize: "1.5em" }}
+              />
               {rating}
             </div>
             <div className="review">리뷰: {user_ratings_total}</div>
-            <div className="dist">주소:{vicinity.length > 18 ? `${vicinity.slice(0, 18)}...` : vicinity}</div>
             <div className="dist">
-              거리: {distance >= 1000 ? (distance / 1000).toFixed(1) + "km" : distance.toFixed(0) + "m"}
+              주소:
+              {vicinity.length > 18 ? `${vicinity.slice(0, 18)}...` : vicinity}
+            </div>
+            <div className="dist">
+              거리:{" "}
+              {distance >= 1000
+                ? (distance / 1000).toFixed(1) + "km"
+                : distance.toFixed(0) + "m"}
             </div>
           </div>
         </StyledLink>
       </Container>
-
     </>
   );
 }

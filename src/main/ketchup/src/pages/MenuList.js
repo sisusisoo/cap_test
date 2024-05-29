@@ -1,11 +1,12 @@
 import ResInfo from "../component/ResInfo";
-import MenuItem from "../component/MenuItem";
+//import MenuItem from "../component/MenuItem";
+import MenuNullList from "../component/MenuNullList";
 
 const MenuList = () => {
   return (
     <div>
       <ResInfo />
-      <MenuItem />
+      <MenuNullList />
     </div>
   );
 };

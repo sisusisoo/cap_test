@@ -1,10 +1,10 @@
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
-import { propTypes } from "react-bootstrap/esm/Image";
+//import { propTypes } from "react-bootstrap/esm/Image";
 
 const Star = ({ rating }) => {
   const numericRating = parseFloat(rating); // rating 값을 숫자로 변환
-  //console.log("Rating value:", numericRating); 
+  //console.log("Rating value:", numericRating);
 
   return (
     <Stack direction="row" alignItems="center" spacing={1}>

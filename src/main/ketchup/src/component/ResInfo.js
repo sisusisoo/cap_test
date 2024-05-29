@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Star from "./Star";
 import { FaLocationDot } from "react-icons/fa6";
@@ -37,7 +37,7 @@ const Container = styled.div`
   .id {
     display: none; //id 숨기기
   }
-  
+
   .name-sound {
     display: flex;
     justify-content: center;
@@ -56,44 +56,62 @@ const Container = styled.div`
     text-align: center;
     margin-top: 3vh;
     margin-left: 25vw;
-
   }
 
   .location {
     text-align: center;
     margin-top: 3vh;
   }
+`;
 
+const ReviewButton = styled.button`
+  background-color: transparent;
+  position: absolute;
+  bottom: -4vh;
+  right: -2vw;
+  margin: 10vw;
+  padding: 1vw 1vw;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 4vw;
+  color: #c35050;
 `;
 
 const ResInfo = () => {
   const { place_id } = useParams(); // useParams로 파라미터 가져오기
   const Location = useLocation(); // useLocation() 호출, location 객체 반환
-  const [soundImageSrc, setSoundImageSrc] = useState("https://img.icons8.com/?size=100&id=2795&format=png&color=000000");
+  const [soundImageSrc, setSoundImageSrc] = useState(
+    "https://img.icons8.com/?size=100&id=2795&format=png&color=000000"
+  );
+  const navigate = useNavigate();
 
-  // 현재 경로가 '/main/menulist/'인지 확인하여 렌더링 여부 결정
-  if (!Location.pathname.startsWith("/main/menulist/")) {
-    return null;
-  }
   // search 부분을 URLSearchParams 객체로 생성
   const params = new URLSearchParams(Location.search);
 
   // 쿼리 가져오기
   const name = params.get("name");
-  const img = params.get("img"); // 단일 이미지 URL로 변경
+  //const img = params.get("img"); // 단일 이미지 URL로 변경
   const rating = params.get("star");
   const location = params.get("location");
-  const user_ratings_total = null;
-
+  //const user_ratings_total = null;
 
   const handleSoundImageClick = async () => {
-    setSoundImageSrc("https://img.icons8.com/?size=100&id=9982&format=png&color=000000"); // 음향 이미지
+    setSoundImageSrc(
+      "https://img.icons8.com/?size=100&id=9982&format=png&color=000000"
+    ); // 음향 이미지
     try {
       await getSpeech(name);
-    } 
-    finally {
-      setSoundImageSrc("https://img.icons8.com/?size=100&id=2795&format=png&color=000000");
+    } finally {
+      setSoundImageSrc(
+        "https://img.icons8.com/?size=100&id=2795&format=png&color=000000"
+      );
     }
+  };
+
+  //리뷰리스트 페이지 이동시 id 데이터도 함께 전달
+  const gotoReviewList = () => {
+    navigate(`/main/menulist/${place_id}/reviewList`);
   };
 
   return (
@@ -106,14 +124,16 @@ const ResInfo = () => {
           <SoundImage src={soundImageSrc} onClick={handleSoundImageClick} />
         </div>
         <div className="star">
-          <Star rating={rating} color="yellow" style={{ fontSize: "1.5em" }} /> &nbsp;{rating}
+          <Star rating={rating} color="yellow" style={{ fontSize: "1.5em" }} />{" "}
+          &nbsp;{rating}
         </div>
         <p className="location">
-          <FaLocationDot /> {" "}{location}
+          <FaLocationDot /> {location}
         </p>
+        <ReviewButton onClick={gotoReviewList}>Review{">"}</ReviewButton>
       </Container>
     </Wrapper>
   );
-}
+};
 
 export default ResInfo;

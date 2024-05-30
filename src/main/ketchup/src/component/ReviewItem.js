@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -25,7 +25,7 @@ const Profile = styled.img`
   margin-right: 10px;
 `;
 
-const Date = styled.div`
+const Datestyle = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-bottom: 2vh;
@@ -77,12 +77,47 @@ const ReviewItem = ({ review, writer, loggedInUser, onReviewDelete }) => {
     return null;
   }
 
-  //리뷰 수정 페이지로 이동
+  // 리뷰 수정 페이지로 이동
   const handleUpdate = () => {
     navigate(
       `/main/menulist/${review.resid}/reviewList/update/${review.Rev_id}`
     );
   };
+
+  // 글 작성 시간 계산 함수 (몇 분 전 / 몇 시간 전 / 몇 일 전)
+  // 작성 시간 계산
+  const detailDate = (dateString) => {
+    if (!dateString) {
+      return "";
+    }
+
+    const today = new Date(); // 현재 시간
+    const postingDate = new Date(dateString); // 작성일자
+
+    const timeDiff = today.getTime() - postingDate.getTime(); // 시간 차이 (밀리초 단위)
+    const minutesDiff = Math.floor(timeDiff / (1000 * 60)); // 분 차이
+    const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60)); // 시간 차이
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 일자 차이
+
+    if (minutesDiff < 2) {
+      return "방금전";
+    }
+    // 작성한지 1시간 미만
+    if (minutesDiff < 60) {
+      return minutesDiff + "분 전";
+    }
+
+    // 작성한지 1시간 이상 ~ 하루 이내
+    if (hoursDiff < 24) {
+      return hoursDiff + "시간 전";
+    }
+
+    // 작성한지 하루 이상
+    return daysDiff + "일 전";
+  };
+
+  // 업로드 시간 가공
+  const nowDate = detailDate(review.date);
 
   return (
     <Container>
@@ -93,7 +128,7 @@ const ReviewItem = ({ review, writer, loggedInUser, onReviewDelete }) => {
           {user && user.nickname}
         </Name>
       </User>
-      <Date>{review.date}</Date>
+      <Datestyle>{nowDate}</Datestyle>
       <div>{review.content}</div>
       {review.image && <ReviewImage src={review.image} alt="" />}
       {loggedInUser && loggedInUser.id === review.userid && (

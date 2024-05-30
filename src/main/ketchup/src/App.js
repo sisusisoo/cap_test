@@ -60,7 +60,7 @@ function App() {
               element={<ReviewWrite />}
             />
             <Route
-              path="/main/menulist/:place_id/reviewList/write/:reviewId"
+              path="/main/menulist/:place_id/reviewList/update/:reviewId"
               element={<ReviewUpdate />}
             />
             <Route path="/menulist/:id/:Food_id" element={<MenuDetail />} />

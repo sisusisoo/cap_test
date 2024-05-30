@@ -3,16 +3,12 @@ import { FiCamera } from "react-icons/fi";
 import { IoMdCloseCircle } from "react-icons/io";
 import styled from "styled-components";
 
-
 const NameBox = styled.div`
   margin-top: 6vh;
-  margin-left: 2vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 3vh;
 
-  .add_photo {
+  .photo {
     font-size: 3vh;
     font-weight: bold;
     color: #c35050;
@@ -20,23 +16,14 @@ const NameBox = styled.div`
   }
 `;
 
-const BoxWrapper = styled.div`
+const Box = styled.div`
+  position: relative;
+  height: 30vh;
+  width: 100%;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Box = styled.div`
-  position: relative;
-  border-radius:1vh;
-  height: 30vh;
-  width: 90%;
-  border: 1px solid #c35050;
-  
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-
   overflow: hidden;
 
   img {
@@ -123,33 +110,30 @@ const PhotoField = forwardRef((props, ref) => {
         <CameraIcon>
           <FiCamera />
         </CameraIcon>
-        <div className="add_photo">사진 추가</div>
+        <div className="photo">사진 추가</div>
       </NameBox>
-      <BoxWrapper>
-        <input
-          type="file"
-          accept=".jpg,.png,.jpeg"
-          ref={InputRef}
-          onChange={handleImage}
-          style={{ display: "none" }}
-        />
-        {Image ? (
-          <Box>
-            <img src={Image} alt="이미지" />
-            <CloseIcon onClick={cancleImage}>
-              <IoMdCloseCircle />
-            </CloseIcon>
-          </Box>
-        ) : (
-          <Box>
-            <div className="guide" onClick={() => InputRef.current.click()}>
-              사진을 첨부해주세요
-            </div>
-          </Box>
-        )}
-      </BoxWrapper>
+      <input
+        type="file"
+        accept=".jpg,.png,.jpeg"
+        ref={InputRef}
+        onChange={handleImage}
+        style={{ display: "none" }}
+      />
+      {Image ? (
+        <Box>
+          <img src={Image} alt="이미지" />
+          <CloseIcon onClick={cancleImage}>
+            <IoMdCloseCircle />
+          </CloseIcon>
+        </Box>
+      ) : (
+        <Box>
+          <div className="guide" onClick={() => InputRef.current.click()}>
+            사진을 첨부해주세요
+          </div>
+        </Box>
+      )}
     </div>
-
   );
 });
 

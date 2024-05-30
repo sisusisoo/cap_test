@@ -1,7 +1,7 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom"; // Link 추가
-import { MdHome, MdSearch, MdCameraAlt, MdWidgets, MdPerson } from "react-icons/md";
+import { MdHome, MdSearch, MdCameraAlt } from "react-icons/md";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -10,6 +10,8 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
   height: 55px;
+  border-top: 1px solid #dee2e6;
+  z-index: 3;
 `;
 
 const BottomNav = () => {
@@ -30,13 +32,6 @@ const BottomNav = () => {
           to="/main" // 링크의 목적지 설정
         />
         <BottomNavigationAction
-          label="Search"
-          value="search"
-          icon={<MdSearch size={40} />}
-          component={Link} // Link로 변경
-          to="/googleMap" // 링크의 목적지 설정
-        />
-        <BottomNavigationAction
           label="Camera"
           value="camera"
           icon={<MdCameraAlt size={40} />}
@@ -44,16 +39,11 @@ const BottomNav = () => {
           to="/main/picture"
         />
         <BottomNavigationAction
-          label="Tema"
-          value="tema"
-          component={Link}
-          to="/photo" // 링크의 목적지 설정
-          icon={<MdWidgets size={40} />}
-        />
-        <BottomNavigationAction
-          label="Mypage"
-          value="mypage"
-          icon={<MdPerson size={40} />}
+          label="Search"
+          value="search"
+          icon={<MdSearch size={40} />}
+          component={Link} // Link로 변경
+          to="/googleMap" // 링크의 목적지 설정
         />
       </BottomNavigation>
     </Wrapper>

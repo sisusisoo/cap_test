@@ -36,7 +36,7 @@ const ReviewList = () => {
   const [reviews, setReviews] = useState([]); // 리뷰 목록 상태
   const [count, setCount] = useState(0); // 리뷰 개수
   const [writer, setWriter] = useState([]); // 리뷰 작성자
-  const [user, setUser] = useState(""); // 로그인 사용자 UID 상태
+  const [user, setUser] = useState(null); // 로그인 사용자 상태
 
   // 리뷰 작성 페이지로 이동
   const gotoReviewWrite = () => {
@@ -46,7 +46,9 @@ const ReviewList = () => {
   useEffect(() => {
     // 로컬 스토리지에서 로그인한 사용자 정보 가져오기
     const storedUser = localStorage.getItem("user");
-    setUser(storedUser);
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); //사용자 정보를 JSON.parse로 객체로 변환하여 user에 저장
+    }
   }, []); // 컴포넌트가 마운트될 때 한 번만 실행
 
   // 식당 place_id에 맞는 리뷰 불러오기
@@ -63,7 +65,6 @@ const ReviewList = () => {
         );
         setReviews(foundReviews);
         setCount(foundReviews.length);
-        console.log();
 
         // 사용자 데이터 가져오기
         const usersSnapshot = await database.ref("Users").once("value");

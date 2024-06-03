@@ -117,6 +117,10 @@ const ResInfo = () => {
         // menu 문자열을 배열로 변환하고 콘솔에 출력
         if (data.menu) {
           const menuArray = data.menu.split(",");
+          const response = await axios.post('http://localhost:8080/compare-food', {
+                 foodName: menu, // Set an empty string or any default value as needed
+          });
+          console.log(response.data);
           menuArray.forEach((item, index) => {
             console.log(`Menu item ${index + 1}: ${item}`);
           });

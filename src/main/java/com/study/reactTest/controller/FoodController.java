@@ -24,8 +24,7 @@ public class FoodController {
 
     @PostMapping("/compare-food")
     public List<FoodDTO> compareFood(@RequestBody String foodName) {
-
-        String[] array = StringtoArray.stringToArray();  // 배열 만들어서 안에 음식이름 차례대로 삽입
+        String[] array = StringtoArray.stringToArray(foodName); // 배열 만들어서 안에 음식이름 차례대로 삽입
         List<FoodDTO> foodDtoList = foodService.searchFood(array);  // 리스트 만들어서 서비스 이용해서 해당 음식 데이터 가져오기
 
         for (FoodDTO foodDTO : foodDtoList) {

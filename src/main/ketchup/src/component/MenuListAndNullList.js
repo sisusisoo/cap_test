@@ -2,9 +2,10 @@ import { useLocation, useParams } from "react-router-dom";
 import { MdRestaurantMenu } from "react-icons/md";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { saveDataToFirebase, updateMenuInFirebase, fetchDataFromFirebase } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
 import RestructureItem from "./RestructureItem";
 import ImageUploadCustom from "./ImageUploadCustom";
+import axios from "axios";
+import { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ const MenuItem = styled.div`
   margin: 1vh 0;
 `;
 
-const MenuNullList = () => {
+const MenuListAndNullList = () => {
   const { place_id } = useParams();
   const location = useLocation();
   const [menu, setMenu] = useState(null);
@@ -61,26 +62,37 @@ const MenuNullList = () => {
   const key = `${name}-${placeLocation}`;
 
   useEffect(() => {
-    const checkAndFetchData = async () => {
-      const data = await fetchDataFromFirebase(key);
-      if (data) {
+    const checkAndSaveData = async () => {
+      const exists = await checkIfDataExists(key);
+      if (exists) {
         setDataExists(true);
-        setMenu(data.menu);
+        const data = await getDataFromFirebase(key);
+        setMenu(data.menu); // 데이터가 존재하면 menu 상태 업데이트
+
+        // menu 문자열을 배열로 변환하고 콘솔에 출력
         if (data.menu) {
           const menuArray = data.menu.split(",");
-          setMenuItems(menuArray);
+          console.log(menu);
+          const response = await axios.post('http://localhost:8080/compare-food', {
+                 foodName: menu, // Set an empty string or any default value as needed
+          });
+          console.log(response.data);
+          setMenuItems(response.data);
+          menuArray.forEach((item, index) => {
+            console.log(`Menu item ${index + 1}: ${item}`);
+          });
         }
       } else {
-        setDataExists(false);
-        saveDataToFirebase(name, placeLocation, menu);
+        saveToFirebase(name, placeLocation, menu);
       }
     };
 
     if (name && placeLocation) {
-      checkAndFetchData();
+      checkAndSaveData();
     }
   }, [name, placeLocation, key, menu]);
 
+  //일단 안씀 
   const gotoPicture = () => {
     const newMenu = '감자탕,닭곰탕,칼국수';
     updateMenuInFirebase(name, placeLocation, newMenu);
@@ -90,8 +102,6 @@ const MenuNullList = () => {
 
   return (
     <Wrapper>
-      <hr />
-      <Icon />
       {dataExists ? (
         <>
           {menuItems.map((food, index) => (
@@ -109,7 +119,7 @@ const MenuNullList = () => {
   );
 };
 
-export default MenuNullList;
+export default MenuListAndNullList;
 
 
 

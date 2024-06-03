@@ -64,7 +64,7 @@ const ImageUpload = ({ id }) => {
   // const [imageUrl, setImageUrl] = useState(null); // 이미지 출력을 위해 추가
   const inputRef = useRef(null);
   const navigate = useNavigate();
-  const foodName=""
+  const foodName = ""
 
   const onImageUpload = (e) => {
     setImage(e.target.files[0]);
@@ -79,11 +79,12 @@ const ImageUpload = ({ id }) => {
       await axios.post("http://localhost:8080/upload.do", formData);
       // responseType: "arraybuffer", // JavaScript에서 바이너리 데이터를 다루기 위한 형식, 메모리에서 고정 길이의 바이너리 데이터를 나타냄
       const response = await axios.post('http://localhost:8080/compare-food', {
-                 foodName: foodName, // Set an empty string or any default value as needed
-               });
-       const foodNamesList = response.data; // 서버로부터 받은 음식 이름 리스트
-       // console.log(foodNamesList);
-       gotoMenuList(foodNamesList); // 음식 이름 리스트 전달
+        foodName: foodName, // Set an empty string or any default value as needed
+      });
+      console.log("image upload compareFood");
+      const foodNamesList = response.data; // 서버로부터 받은 음식 이름 리스트
+      // console.log(foodNamesList);
+      gotoMenuList(foodNamesList); // 음식 이름 리스트 전달
 
 
     } catch (error) {

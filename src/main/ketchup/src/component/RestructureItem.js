@@ -107,7 +107,7 @@ const RestructureItem = ({ food }) => {
   };
   const {
     id = 1,
-    base64Image = "",
+    foodimage = "",
     foodcalcium = 0,
     foodcalorie = 0,
     foodcarbohydrate = 0,
@@ -138,7 +138,7 @@ const RestructureItem = ({ food }) => {
   return (
     <Box key={id}>
       <ImageWrapper>
-        <Image src={base64Image ? base64Image[0].getUrl() : 'http://via.placeholder.com/200'} alt={foodname} />
+        <Image src={foodimage ? foodimage : 'http://via.placeholder.com/200'} alt={foodname} />
       </ImageWrapper>
       <NameWrapper>
         <Name to={`/main/picture/restructure/detail/${id}`}>

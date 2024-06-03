@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,20 @@ public class FoodController {
     private final FoodService foodService; // 이 필드를 매개변수로하는 컨트롤러 생성자를 만들어줌
 
     @PostMapping("/compare-food")
-    public List<FoodDTO> compareFood(@RequestBody String foodName) {
+    public List<FoodDTO> compareFood(@RequestBody Map<String,String> request) {
+        String foodName=request.get("foodName");
+        System.out.println(foodName);
+        String[] array;
+        if(foodName.equals("")){
+            System.out.println("compareFodd else");
+            array = StringtoArray.stringToArray();//일반 upload.do 할때
 
-        String[] array = StringtoArray.stringToArray();  // 배열 만들어서 안에 음식이름 차례대로 삽입
+        }
+        else {
+            System.out.println("compareFodd if");
+            array=StringtoArray.stringToArray(foodName);  // 배열 만들어서 안에 음식이름 차례대로 삽입
+        }
+
         List<FoodDTO> foodDtoList = foodService.searchFood(array);  // 리스트 만들어서 서비스 이용해서 해당 음식 데이터 가져오기
 
         for (FoodDTO foodDTO : foodDtoList) {

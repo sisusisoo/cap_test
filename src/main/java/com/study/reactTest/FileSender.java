@@ -45,7 +45,7 @@ FileSender extends Thread {
 
 		fileSize = (int) imageFile.length() * 100;
 		fis = new FileInputStream(imageFile);
-		bos.write(Integer.toString(fileSize).getBytes());
+		bos.write(Integer.toString(fileSize).getBytes("UTF-8"));//이거 가끔 한글 깨질때
 		bos.flush();
 		System.out.println("send file size : " + fileSize);
 		return true;

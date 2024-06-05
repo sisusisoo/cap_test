@@ -6,6 +6,7 @@ import RestructureItem from "./RestructureItem";
 import ImageUploadCustom from "./ImageUploadCustom";
 import axios from "axios";
 import { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
+import { DeployIP,DevIP } from "../DeploySetting"
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,7 +74,7 @@ const MenuListAndNullList = () => {
         if (data.menu) {
           const menuArray = data.menu.split(",");
           console.log(menu);
-          const response = await axios.post('http://localhost:8080/compare-food', {
+          const response = await axios.post(DevIP+'/compare-food', {
                  foodName: menu, // Set an empty string or any default value as needed
           });
           console.log(response.data);

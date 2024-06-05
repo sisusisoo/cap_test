@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import { DeployIP,DevIP } from "../DeploySetting"
+
 
 const BoxWrapper = styled.div`
   display: flex;
@@ -76,9 +78,10 @@ const ImageUpload = ({ id }) => {
     try {
       const formData = new FormData();
       formData.append("image", image);
-      await axios.post("http://localhost:8080/upload.do", formData);
-      // responseType: "arraybuffer", // JavaScript에서 바이너리 데이터를 다루기 위한 형식, 메모리에서 고정 길이의 바이너리 데이터를 나타냄
-      const response = await axios.post('http://localhost:8080/compare-food', {
+      await axios.post(DevIP+"/upload.do", formData, {
+      withCredentials: true // 쿠키 cors 통신 설정
+      })
+      const response = await axios.post(DevIP+'/compare-food', {
         foodName: foodName, // Set an empty string or any default value as needed
       });
       console.log("image upload compareFood");

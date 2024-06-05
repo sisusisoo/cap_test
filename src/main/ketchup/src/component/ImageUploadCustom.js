@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import RestructureItem from "./RestructureItem";
+import { DeployIP,DevIP } from "../DeploySetting"
 
 import { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
 
@@ -85,9 +86,9 @@ const ImageUploadCustom = ({ id }) => {
         try {
             const formData = new FormData();
             formData.append("image", image);
-            await axios.post("http://localhost:8080/upload.do", formData);
+            await axios.post(DevIP+"/upload.do", formData);
             // responseType: "arraybuffer", // JavaScript에서 바이너리 데이터를 다루기 위한 형식, 메모리에서 고정 길이의 바이너리 데이터를 나타냄
-            const response = await axios.post('http://localhost:8080/compare-food', {
+            const response = await axios.post(DevIP+'/compare-food', {
                 foodName: foodName, // Set an empty string or any default value as needed
             });
             //const foodNamesList = response.data; // 서버로부터 받은 음식 이름 리스트

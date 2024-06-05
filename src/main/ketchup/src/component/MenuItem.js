@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { FaSearchPlus } from "react-icons/fa";
+import { DeployIP,DevIP } from "../DeploySetting"
+
 
 const Box = styled.div`
   width: 90vw;
@@ -57,7 +59,7 @@ const MenuItem = () => {
   useEffect(() => {
     //id에 해당하는 음식 데이터 가져오기
     axios
-      .get(`http://localhost:8080/Restaruant/${id}`)
+      .get(DevIP+"/Restaruant/${id}")
       .then((res) => {
         const resData = res.data;
 

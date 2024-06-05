@@ -36,3 +36,5 @@ out/
 ### VS Code ###
 .vscode/
 node_module/
+cert/
+src/main/resources/cert_and_key.p12

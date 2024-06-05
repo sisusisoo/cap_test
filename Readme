@@ -12,20 +12,15 @@ docker에 올릴때 수정 목록
 
 
 java*
-
+(Ip클래스 확인)
 client(ip)
 handlerfile
 
-OhChangEun
 
 
 
 react*
-filedata &
-imageupload("13.209.22.163")
-menudetail("13.209.22.163")
-menudlist("13.209.22.163")
-CommonFunction
+deploysetimg
 
 
 DB 체크*

@@ -86,9 +86,9 @@ public class HandlerFile {
 	                              .append(oldFileName.substring(oldFileName.lastIndexOf("."))).toString();
 
 		  ///수정
-	      //fileFullPath = filePath + "/" + saveFileName; // 파일 전체 경로
-			fileFullPath =   "C:/saveFolder/" + saveFileName;//최신
-			//fileFullPath =   "/root/saveFolder/" + saveFileName;
+	      	fileFullPath = filePath + "/" + saveFileName; // 파일 전체 경로
+			//fileFullPath =   "C:/saveFolder/" + saveFileName;//최신
+			//fileFullPath =   "/root/saveFolder/" + saveFileName;//배포용
 			//---------------------
 			System.out.println("전체파일경로"+fileFullPath);
 	      try {

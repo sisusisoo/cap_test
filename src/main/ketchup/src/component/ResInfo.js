@@ -93,8 +93,42 @@ const ResInfo = () => {
   const name = params.get("name");
   //const img = params.get("img"); // 단일 이미지 URL로 변경
   const rating = params.get("star");
+<<<<<<< HEAD
   const location = params.get("location");
   //const user_ratings_total = null;
+=======
+  const placeLocation = params.get("location");
+
+  const key = `${name}-${placeLocation}`;
+
+  useEffect(() => {
+    const checkAndSaveData = async () => {
+      const exists = await checkIfDataExists(key);
+      if (exists) {
+        const data = await getDataFromFirebase(key);
+        setMenu(data.menu); // 데이터가 존재하면 menu 상태 업데이트
+
+        // menu 문자열을 배열로 변환하고 콘솔에 출력
+        if (data.menu) {
+          const menuArray = data.menu.split(",");
+          const response = await axios.post('http://localhost:8080/compare-food', {
+                 foodName: menu, // Set an empty string or any default value as needed
+          });
+          console.log(response.data);
+          menuArray.forEach((item, index) => {
+            console.log(`Menu item ${index + 1}: ${item}`);
+          });
+        }
+      } else {
+        saveToFirebase(name, placeLocation, menu);
+      }
+    };
+
+    if (name && placeLocation) {
+      checkAndSaveData();
+    }
+  }, [name, placeLocation, key, menu]);
+>>>>>>> 0bc70600ad971915cfe9fed51c8bcd77556398fe
 
   const handleSoundImageClick = async () => {
     setSoundImageSrc(

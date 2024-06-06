@@ -24,6 +24,7 @@ public class FoodController {
     private final FoodService foodService; // 이 필드를 매개변수로하는 컨트롤러 생성자를 만들어줌
 
     @PostMapping("/compare-food")
+<<<<<<< HEAD
     public List<FoodDTO> compareFood(@RequestBody Map<String,String> request) {
         String foodName=request.get("foodName");
         System.out.println(foodName);
@@ -38,6 +39,10 @@ public class FoodController {
             array=StringtoArray.stringToArray(foodName);  // 배열 만들어서 안에 음식이름 차례대로 삽입
         }
 
+=======
+    public List<FoodDTO> compareFood(@RequestBody String foodName) {
+        String[] array = StringtoArray.stringToArray(foodName); // 배열 만들어서 안에 음식이름 차례대로 삽입
+>>>>>>> 0bc70600ad971915cfe9fed51c8bcd77556398fe
         List<FoodDTO> foodDtoList = foodService.searchFood(array);  // 리스트 만들어서 서비스 이용해서 해당 음식 데이터 가져오기
 
         for (FoodDTO foodDTO : foodDtoList) {

@@ -43,7 +43,7 @@ export const getSpeech = (text) => {
       if (voice) {
         utterThis.voice = voice;
       } else {
-        alert("Voice list is empty");
+        //alert("Voice list is empty");
         return;
       }
 

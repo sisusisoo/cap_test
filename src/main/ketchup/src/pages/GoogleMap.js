@@ -467,7 +467,7 @@ export default function GoogleMap() {
                     {selectedPlaceDetails ? (
                         <DetailContainer>
                             <DetailTitle>
-                                <StyledLink to={`/main/menulist/${selectedPlaceDetails.place_id}?name=${selectedPlaceDetails.name}&star=${selectedPlaceDetails.rating}&location=${selectedPlaceDetails.formatted_address}&img=${selectedPlaceDetails.photos}`}>
+                                <StyledLink to={`/main/menulist/${selectedPlaceDetails.place_id}?name=${selectedPlaceDetails.name}&star=${selectedPlaceDetails.rating}&location=${selectedPlaceDetails.vicinity}&img=${selectedPlaceDetails.photos}`}>
                                     {selectedPlaceDetails.name}
                                 </StyledLink>
                             </DetailTitle>

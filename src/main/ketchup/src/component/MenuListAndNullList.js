@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import RestructureItem from "./RestructureItem";
 import ImageUploadCustom from "./ImageUploadCustom";
 import axios from "axios";
-import { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
+import { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase,checkIfMenuExists } from "../component/saveToFirebase"; // Firebase 저장 및 업데이트 함수 임포트
 import { DeployIP,DevIP } from "../DeploySetting"
 
 const Wrapper = styled.div`
@@ -65,7 +65,8 @@ const MenuListAndNullList = () => {
   useEffect(() => {
     const checkAndSaveData = async () => {
       const exists = await checkIfDataExists(key);
-      if (exists) {
+      const existsMenu = await checkIfMenuExists(key);
+      if (exists && existsMenu) {
         setDataExists(true);
         const data = await getDataFromFirebase(key);
         setMenu(data.menu); // 데이터가 존재하면 menu 상태 업데이트

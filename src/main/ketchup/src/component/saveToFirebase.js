@@ -37,5 +37,16 @@ const getDataFromFirebase = async (key) => {
     return null;
   }
 };
+const checkIfMenuExists = async (key) => {//
+  const dbRef = ref(database);
+  const snapshot = await get(child(dbRef, `places/${key}/menu`));
+  
+  // Check if the 'menu' field exists and is not empty//메뉴가 비었는지 채워져있는지
+  if (snapshot.exists() && snapshot.val()) {
+    return true; // Menu exists and is not empty
+  } else {
+    return false; // Menu does not exist or is empty
+  }
+};
 
-export { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase };
+export { saveToFirebase, updateMenuInFirebase, checkIfDataExists, getDataFromFirebase,checkIfMenuExists };
